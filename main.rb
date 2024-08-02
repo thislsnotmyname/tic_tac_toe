@@ -1,5 +1,6 @@
 require_relative 'lib/player'
 require_relative 'lib/board'
+require_relative 'lib/game'
 
 # JM, 08/01/2024
 
@@ -11,14 +12,27 @@ require_relative 'lib/board'
 # Board (make it scalable) ✅
 #
 # Instance variable:
-# Board State - Board
+# Board State - Board ✅
 # Playing piece - Player
 #
 # Method:
-# Win? - Board
+# Win? - Board ✅
 # Get Choice - Player
 #
-puts "Let's play Tic-Tac-Toe!"
-board = Board.new(3)
-p board.board_state
-p board.win? 'X'
+playing = 1
+while playing == 1
+  puts "Let's play Tic-Tac-Toe!"
+  size = 0
+  loop do
+    print 'Choose your board size: '
+    size = gets.chomp.to_i
+    break unless size == 0
+  end
+  game = Game.new(size)
+  game.game_loop
+  puts 'Play again? (y/n)'
+  next if gets.chomp.downcase == 'y'
+
+  playing = 0
+  puts 'Bye-bye!'
+end
