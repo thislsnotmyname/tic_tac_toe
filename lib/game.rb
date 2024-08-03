@@ -13,6 +13,7 @@ class Game
     @players = {}
     @winner = nil
     player_count.times { |player_num| @players[player_num] = Player.new(PIECES[player_num], player_num) }
+    display
     game_loop
   end
 
@@ -33,7 +34,6 @@ class Game
   private
 
   def game_loop
-    display
     while winner.nil?
       players.each do |player|
         board.new_move(player[1].send(:move, board.board_state), player[1].piece)
