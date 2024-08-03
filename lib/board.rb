@@ -2,7 +2,7 @@
 #
 # JM, 08/03/2024
 class Board
-  attr_reader :grid_size, :board_state
+  attr_reader :board_state
 
   COORDINATES = 'abcdefghijklmnopqrstuvwxyz'.freeze
 
@@ -51,6 +51,8 @@ class Board
   end
 
   private
+
+  attr_reader :grid_size
 
   def check_diagonals(player_piece)
     2.times do |diagonal_num|

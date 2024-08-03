@@ -2,7 +2,7 @@
 #
 # JM, 08/03/2024
 class Game
-  attr_reader :board, :player_count, :players, :winner
+  attr_reader :board, :players, :winner
 
   PIECES = 'XO'.freeze
 
@@ -33,6 +33,8 @@ class Game
 
   private
 
+  attr_reader :player_count
+
   def game_loop
     while winner.nil?
       players.each do |player|
@@ -53,7 +55,7 @@ class Game
       puts "Cat's game!"
       return cats_game
     end
-    puts "Game over! Player #{@winner[0] + 1} (#{@winner[1].piece}) wins!"
+    puts "Game over! Player #{@winner[1].player_number} (#{@winner[1].piece}) wins!"
     @winner[1]
   end
 
